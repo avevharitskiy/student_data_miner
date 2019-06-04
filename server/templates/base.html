@@ -1,0 +1,13 @@
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_page.css') }}">
+    {% if title %}
+    <title>{{ title }} - PersonEnviroment</title>
+    {% else %}
+    <title>Welcome to PersonEnviroment</title>
+    {% endif %}
+</head>
+<body class="background_image">
+    {% block content %}{% endblock %}
+</body>

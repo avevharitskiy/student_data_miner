@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="parent">
+    <div class="substract">
+        <span class="header">PersonalEnviroment</span>
+        <p class="text">Find out all about your friends</p>
+        <form class="input_form" acrion="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <p class="input_item">
+                {{ form.username(class="input") }}
+            </p>
+            <p class="input_item">
+                {{ form.password(class="input") }}
+            </p>
+            <p class='input_item'>
+                <div class="squaredThree">{{ form.remember_me() }} {{ form.remember_me.label() }}</div>
+            </p>
+            <p class='input_item'>{{ form.submit() }}</p>
+        </form>
+    </div>
+</div>
+{% endblock %}

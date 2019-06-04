@@ -1,0 +1,107 @@
+
+.background_image {
+    /*background-color: red;*/
+    background-image: url("../images/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parent {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+div.substract {
+    padding: 30 30 0 30;
+    width: auto;
+    height: auto;
+    background-color:rgba(0,0,0,.5);
+    border-radius: 25px;
+}
+
+span.header {
+    color: #fff;
+    font: 500 48px/1 Helvetica,sans-serif;
+    display: inline-block;
+    padding-left: 15px;
+}
+
+.text {
+    color: #fff;
+    font-size: 20px;
+    padding: 25px 0 40px 15px!important;
+}
+
+.input_form {
+    width: 100%
+}
+
+p.input_item {
+    padding: 0;
+    margin: 0;
+    min-height: 80px;
+    list-style: none;
+    text-align: center;
+}
+
+input.input {
+    border: 1px solid #fff;
+    background: #fff;
+    font: 18px/44px Helvetica,sans-serif;
+    color: #94979c;
+    width: 100%;
+    padding: 0 15px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/*Pretty checkbox styles*/
+.squaredThree {
+    width: 20px;
+    position: relative;
+    margin: 20px auto;
+}
+.squaredThree label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    color: white;
+    top: -10px;
+    left: 0;
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, .4);
+  }
+.squaredThree label:after {
+    content: '';
+    width: 9px;
+    height: 5px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border: 3px solid #fcfff4;
+    border-top: none;
+    border-right: none;
+    background: transparent;
+    opacity: 0;
+    transform: rotate(-45deg);
+}
+.squaredThree label:hover::after {
+    opacity: 0.3;
+}
+.squaredThree input[type=checkbox] {
+    visibility: hidden;
+}
+.squaredThree input[type=checkbox]:checked + label:after {
+    opacity: 1;
+}
