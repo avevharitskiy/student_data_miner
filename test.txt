@@ -1,0 +1,25 @@
+<!-- <div class="substract">
+        <span class="header">PersonEnviroment</span>
+        <p class="text_block simple_text">Find out all about your friends</p>
+        <form class="input_form" acrion="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="input_item">
+                {{ form.username(class="input") }}
+                {% for error in form.username.errors %}
+                    <span class="error_message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="input_item">
+                {{ form.password(class="input") }}
+                {% for error in form.password.errors %}
+                    <span class="error_message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="input_item">
+                <div class="squaredThree"> {{ form.remember_me() }} {{ form.remember_me.label() }}</div>
+                <span class="simple_text">Remember Me</span>
+            </div>
+
+            <div class='input_item'>{{ form.submit(class="login_button") }}</div>
+        </form>
+    </div> -->
