@@ -1,0 +1,18 @@
+body {
+    background: url("../images/background.png") no-repeat fixed;
+    background-size: cover;
+}
+
+.header_font {
+    color: #fff;
+    font: 500 48px/1 Helvetica,sans-serif;
+}
+
+.text_font {
+    color: #fff;
+    font-size: 20px Helvetica,sans-serif;
+}
+
+.bold {
+    font-weight: bold;
+}

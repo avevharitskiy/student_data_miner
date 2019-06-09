@@ -1,0 +1,49 @@
+img {
+    border-radius: 50%;
+    display: inline-block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile_image {
+    width: 200px;
+    height: 200px;
+}
+
+.user_info {
+    position: absolute;
+    height: 200px;
+    display: inline-block;
+    margin-left: 4em;
+    margin-top: 1em;
+    padding-top: 1.6em;
+}
+
+.friends_list {
+    margin-top: 2em;
+    width:100%;
+    text-align: center;
+}
+
+.friend_block {
+    margin: 0.5em;
+    display: inline-block;
+    height: 175px;
+    vertical-align: top;
+}
+
+.friend_image {
+    width: 100px;
+    height: 100px;
+    margin: 0.5em;
+}
+
+.friend_info {
+    text-align: center;
+    width: 100px;
+    margin: 0.5em;
+}
+
+
+
+

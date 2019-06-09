@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login_page.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="parent">
     <div class="substract">
-        <span class="header">PersonEnviroment</span>
-        <p class="text">Find out all about your friends</p>
+        <span class="header header_font">PersonEnviroment</span>
+        <p class="text text_font">Find out all about your friends</p>
         <button class="login_button" onclick="window.location.href='{{ login_link }}';">Sign In</button>
     </div>
 </div>

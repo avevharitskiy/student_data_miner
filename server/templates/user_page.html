@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/person_page.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="header">
+    <img class="profile_image" src = "{{ user_info.photo_200_orig }}">
+    <div class="user_info">
+        <span class="header_font">{{ user_info.last_name }} {{user_info.first_name}}</span>
+        <p class="text_font">Город: {{ user_info.country.title }}, {{user_info.city.title}}</p>
+        <p class="text_font">Дата рождения: {{ user_info.bdate }}</p>
+    </div>
+</div>
+<div class="friends_list">
+    {% for friend in friends_list %}
+        <div class="friend_block">
+            <img class="friend_image" src = "{{ friend.photo_200_orig }}">
+            <p class="text_font friend_info bold">{{ friend.last_name }} {{friend.first_name}}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
