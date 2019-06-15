@@ -30,6 +30,7 @@ img {
     display: inline-block;
     height: 175px;
     vertical-align: top;
+    border-radius: 15%;
 }
 
 .friend_image {
@@ -44,6 +45,10 @@ img {
     margin: 0.5em;
 }
 
+.friend_block:hover {
+    border: 2px solid #800080;
+    margin: 0.35em
+}
 
 
 
