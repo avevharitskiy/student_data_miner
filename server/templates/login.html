@@ -9,7 +9,7 @@
     <div class="substract">
         <span class="header header_font">PersonEnviroment</span>
         <p class="text text_font">Find out all about your friends</p>
-        <button class="login_button" onclick="window.location.href='https://oauth.vk.com/authorize?display=popup&response_type=code&client_id=7009086&redirect_uri=http%3A%2F%2F69502196.ngrok.io%2Flogin&scope=friends';">Sign In</button>
+        <button class="login_button" onclick="window.location.href='https://oauth.vk.com/authorize?display=popup&response_type=code&client_id={{ app_id }}&redirect_uri={{ service_url }}%2Flogin&scope=friends';">Sign In</button>
         {% if error %}
         <p class="error_font">{{ error }}</p>
         {% endif %}

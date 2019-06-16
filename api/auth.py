@@ -5,6 +5,7 @@ from flask import url_for
 
 from server import server
 from api.tools import get_api
+from flask import request, redirect, url_for
 
 
 def get_access_token(code: str) -> str:
@@ -13,7 +14,7 @@ def get_access_token(code: str) -> str:
         params={
             'client_id': server.config.get('VK_APP_ID'),
             'client_secret':  server.config.get('VK_APP_SECRET'),
-            'redirect_uri': requests.compat.urljoin(server.config.get('SERVICE_URI'), url_for('login')),
+            'redirect_uri': requests.compat.urljoin(server.config.get('SERVICE_URL'), url_for('login')),
             'code': code
         }
     )
@@ -24,7 +25,29 @@ def get_access_token(code: str) -> str:
         return result['access_token']
 
 
-def validate_access_token(access_token: str):
+def decorator(func):
+    def wrapper(*args, **kwargs):
+        if 'access_token' in request.cookies and __validate_access_token(request.cookies.get('access_token')):
+            return func(*args, **kwargs)
+        else:
+            return redirect(url_for('login'))
+
+    wrapper.__name__ = func.__name__
+    return wrapper
+
+
+def login(func):
+    def wrapper(*args, **kwargs):
+        if 'access_token' not in request.cookies or not __validate_access_token(request.cookies.get('access_token')):
+            return func(*args, **kwargs)
+        else:
+            return redirect(url_for('user_page'))
+
+    wrapper.__name__ = func.__name__
+    return wrapper
+
+
+def __validate_access_token(access_token: str):
     vkapi = get_api(access_token)
     try:
         vkapi.users.get(v=server.config.get('API_VERSION'))
