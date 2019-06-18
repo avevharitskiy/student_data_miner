@@ -1,26 +1,23 @@
 import vk
-from api.tools import get_api
 from api import user
 from server import server
+import pandas
 import graph_tool
 
-def build_model(access_token: str, user_for_analyse: str):
-    data = __prepare_data(access_token, user_for_analyse)
+
+def build_model(vkapi: vk.API, user_for_analyse: str):
+    data = __prepare_data(vkapi, user_for_analyse)
     print(1)
 
 
-def __prepare_data(access_token: str, user_for_analyse: str):
-    vkapi = get_api(access_token)
-    user_friend_list = user.get_friends(access_token, user_for_analyse, fields=['domain'])
+def __prepare_data(vkapi: vk.API, user_for_analyse: str):
+    user_friend_list = user.get_friends(vkapi, user_for_analyse,)
+    #user_friend_list.append(user_for_analyse)
+    friends_count = len(user_friend_list)
+    user_ids = dict(zip(user_friend_list, range(friends_count)))
+    friend_links = pandas.
 
     for friend in user_friend_list:
-        try:
-            friend['mutual'] = vkapi.friends.getMutual(
-                source_id=user_for_analyse,
-                target_uid=friend['id'],
-                v=server.config.get('API_VERSION')
-            )
-        except vk.exceptions.VkAPIError:
-            friend['mutual'] = []
-            continue
+        mutuals = map(lambda user: user_ids[user], user.get_mutuals(vkapi, user_for_analyse, friend))
+        print(1)
     return user_friend_list

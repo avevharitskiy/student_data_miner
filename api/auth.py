@@ -1,11 +1,10 @@
+import datetime
 import json
 
 import requests
-from flask import url_for
+from flask import redirect, request, url_for
 
 from server import server
-from api.tools import get_api
-from flask import request, redirect, url_for
 
 
 def get_access_token(code: str) -> str:
@@ -22,12 +21,14 @@ def get_access_token(code: str) -> str:
     result = json.loads(response.text)
 
     if 'access_token' in result:
-        return result['access_token']
+        expires_date = datetime.datetime.now() + datetime.timedelta(seconds=result['expires_in'])
+
+        return result['access_token'], expires_date
 
 
 def decorator(func):
     def wrapper(*args, **kwargs):
-        if 'access_token' in request.cookies and __validate_access_token(request.cookies.get('access_token')):
+        if 'access_token' in request.cookies:
             return func(*args, **kwargs)
         else:
             return redirect(url_for('login'))
@@ -38,20 +39,10 @@ def decorator(func):
 
 def login(func):
     def wrapper(*args, **kwargs):
-        if 'access_token' not in request.cookies or not __validate_access_token(request.cookies.get('access_token')):
+        if 'access_token' not in request.cookies:
             return func(*args, **kwargs)
         else:
             return redirect(url_for('user_page'))
 
     wrapper.__name__ = func.__name__
     return wrapper
-
-
-def __validate_access_token(access_token: str):
-    vkapi = get_api(access_token)
-    try:
-        vkapi.users.get(v=server.config.get('API_VERSION'))
-    except vk.exceptions.VkAPIError:
-        return False
-
-    return True
