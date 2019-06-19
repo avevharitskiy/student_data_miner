@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{{ url_for('static', filename='js/result.js') }}"></script>
+<script src="https://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -8,11 +15,16 @@
     <img class="profile_image" src = "{{ user_info.photo_200_orig }}">
     <div class="user_info" >
         <span class="header_font">{{ user_info.last_name }} {{user_info.first_name}}</span>
+        {% if user_info.country and  user_info.city%}
         <p class="text_font">Город: {{ user_info.country.title }}, {{user_info.city.title}}</p>
+        {% endif %}
+        {% if user_info.bdate %}
         <p class="text_font">Дата рождения: {{ user_info.bdate }}</p>
+        {% endif %}
+        <div class="back"><a href="/user_page">Back</a></div>
     </div>
 </div>
-<div>
-    {{model}}
+<div id='model' style="margin-left: auto; margin-right: auto">
+    {{ model }}
 </div>
 {% endblock %}

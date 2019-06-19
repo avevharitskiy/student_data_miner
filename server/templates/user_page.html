@@ -14,8 +14,12 @@
     <img class="profile_image" src = "{{ user_info.photo_200_orig }}">
     <div class="user_info" >
         <span class="header_font">{{ user_info.last_name }} {{user_info.first_name}}</span>
+        {% if user_info.country and  user_info.city%}
         <p class="text_font">Город: {{ user_info.country.title }}, {{user_info.city.title}}</p>
+        {% endif %}
+        {% if user_info.bdate %}
         <p class="text_font">Дата рождения: {{ user_info.bdate }}</p>
+        {% endif %}
     </div>
 </div>
 <div class="friends_list">

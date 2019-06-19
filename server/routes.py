@@ -49,5 +49,5 @@ def analyse():
     user_info = user.get_info(
         vkapi, user_id=request.args.get('analyse_id', '0'), fields=['bdate', 'photo_200_orig', 'city', 'country']
     )
-    model = network_enviroment.build_model(vkapi, user_info)
-    return render_template('result.html', user_info=user_info, model=Markup(model))
+    model = Markup(network_enviroment.build_model(vkapi, user_info))
+    return render_template('result.html', user_info=user_info, model=model)

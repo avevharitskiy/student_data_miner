@@ -1,7 +1,6 @@
-import itertools
-
-test = [x for x in range(124)]
-
-while test:
-    print(test[:100])
-    test = test[100:]
+from graph_tool.all import *
+g = collection.data["football"]
+print(g)
+state = minimize_blockmodel_dl(g)
+pos = arf_layout(g)
+state.draw(pos=state.bfield, output="football-sbm-fit.svg")

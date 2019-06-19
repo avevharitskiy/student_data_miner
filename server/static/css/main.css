@@ -36,7 +36,6 @@ img {
 
 .user_info {
     position: absolute;
-    height: 200px;
     display: inline-block;
     margin-left: 4em;
     margin-top: 1em;
@@ -44,5 +43,7 @@ img {
 }
 
 .header_block {
+    height: 200px;
+    width: 100%;
     margin: 1em;
 }

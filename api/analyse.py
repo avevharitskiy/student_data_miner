@@ -3,6 +3,7 @@ import os
 import pandas
 import vk
 from graph_tool import Graph
+from graph_tool.draw import sfdp_layout
 from graph_tool.inference.minimize import minimize_blockmodel_dl
 
 from api import user
@@ -13,10 +14,13 @@ def build_model(vkapi: vk.API, user_for_analyse: dict):
     graph = Graph(directed=False)
     vmap = graph.add_edge_list(friend_links.values, hashed=True)
     state = minimize_blockmodel_dl(graph)
+    layout = sfdp_layout(graph, groups=state.b)
     state.draw(
+        pos=layout,
         vertex_text=vmap,
         vertex_font_size=3,
-        vertex_text_color='#000000',
+        vertex_size=3,
+        vertex_color=[128, 128, 128, 1],
         output_size=(2000, 2000),
         output="graph.svg")
 

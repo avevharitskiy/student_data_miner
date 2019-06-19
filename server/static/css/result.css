@@ -1,0 +1,18 @@
+.back {
+    background-color:rgba(159, 90, 253, 0.5);
+    width: 4em;
+    height: 1.5em;
+    border-radius: 4em;
+    text-align: center;
+    padding-top: 0.3em;
+}
+
+.back a {
+    color: white;
+    text-decoration: none;
+}
+
+.back:hover {
+    text-decoration: underline;
+    background-color:rgba(159, 90, 253, 1);
+}
