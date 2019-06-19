@@ -21,3 +21,28 @@ body {
     color: red;
     font-size: 30px Helvetica,sans-serif;
 }
+
+img {
+    border-radius: 50%;
+    display: inline-block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile_image {
+    width: 200px;
+    height: 200px;
+}
+
+.user_info {
+    position: absolute;
+    height: 200px;
+    display: inline-block;
+    margin-left: 4em;
+    margin-top: 1em;
+    padding-top: 1.6em;
+}
+
+.header_block {
+    margin: 1em;
+}

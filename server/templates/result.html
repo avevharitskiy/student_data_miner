@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+<div class="header_block">
+    <img class="profile_image" src = "{{ user_info.photo_200_orig }}">
+    <div class="user_info" >
+        <span class="header_font">{{ user_info.last_name }} {{user_info.first_name}}</span>
+        <p class="text_font">Город: {{ user_info.country.title }}, {{user_info.city.title}}</p>
+        <p class="text_font">Дата рождения: {{ user_info.bdate }}</p>
+    </div>
+</div>
+<div>
+    {{model}}
+</div>
+{% endblock %}

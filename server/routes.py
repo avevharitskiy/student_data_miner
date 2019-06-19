@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import urllib.parse as url
 
-from flask import make_response, redirect, render_template, request, url_for
+from flask import make_response, redirect, render_template, request, url_for, Markup
 
 import api.analyse as network_enviroment
 from api import auth, user
@@ -46,4 +46,8 @@ def user_page():
 @auth.decorator
 def analyse():
     vkapi = get_api(request.cookies.get('access_token'))
-    model = network_enviroment.build_model(vkapi, request.args.get('analyse_id', None))
+    user_info = user.get_info(
+        vkapi, user_id=request.args.get('analyse_id', '0'), fields=['bdate', 'photo_200_orig', 'city', 'country']
+    )
+    model = network_enviroment.build_model(vkapi, user_info)
+    return render_template('result.html', user_info=user_info, model=Markup(model))
